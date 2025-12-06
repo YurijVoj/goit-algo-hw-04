@@ -4,13 +4,15 @@ def total_salary(path):
     try:
         if path.exists():
             total = 0 
+            number_of_lines = 0
             with open(path, 'r', encoding='utf-8') as file:
                 for line in file:
                     parts = line.split(',')
                     if len(parts) >= 2: 
                         salary = float(parts[2])
-                        total += salary                
-            average_salary = total / len(file)
+                        total += salary 
+                        number_of_lines += 1             
+            average_salary = total / number_of_lines
             my_tuple = (total, average_salary)      
             return my_tuple                
     except FileNotFoundError:   
